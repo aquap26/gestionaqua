@@ -25,12 +25,14 @@ $allowed_pages = [
     'empresa'          => 'modules/empresa/listar.php',
     'pedidos'          => 'modules/pedidos/listar.php',
     'pedidos_crear'    => 'modules/pedidos/crear.php',
-    'despacho'         => 'modules/despacho/asignar.php',
+    'despacho'         => 'modules/despacho/listar.php',
+    'despacho_asignar' => 'modules/despacho/asignar.php',
     'usuarios'         => 'modules/usuarios/listar.php',
     'usuarios_crear'   => 'modules/usuarios/crear.php',
     'usuarios_editar'  => 'modules/usuarios/editar.php',
     'zonas'            => 'modules/zonas/listar.php',
     'zonas_crear'      => 'modules/zonas/crear.php',
+    'zonas_editar'     => 'modules/zonas/editar.php',
     'chat'             => 'modules/mensajeria/chat.php',
     'auditoria'        => 'modules/auditoria/listar.php'
 ];
@@ -43,13 +45,15 @@ $page_titles = [
     'empresa'          => 'Configuración de la Empresa',
     'pedidos'          => 'Lista de Pedidos',
     'pedidos_crear'    => 'Crear Nuevo Pedido',
-    'despacho'         => 'Asignar Despachador',
+    'despacho'         => 'Tablero de Despacho Logístico',
+    'despacho_asignar' => 'Asignar Rutas a Choferes',
     'usuarios'         => 'Gestión de Usuarios',
     'usuarios_crear'   => 'Registrar Usuario',
     'usuarios_editar'  => 'Editar Usuario',
     'zonas'            => 'Zonas de Entrega',
-    'zonas_crear'      => 'Nueva Zona',
-    'chat'             => 'Chat de Ruta',
+    'zonas_crear'      => 'Registrar Nueva Zona',
+    'zonas_editar'     => 'Editar Zona de Entrega',
+    'chat'             => 'Chat de Ruta Logístico',
     'auditoria'        => 'Bitácora de Auditoría'
 ];
 

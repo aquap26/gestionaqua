@@ -327,7 +327,7 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 */ /*!50003 TRIGGER `tr_pedido_before_insert` BEFORE INSERT ON `pedidos` FOR EACH ROW
 BEGIN
     DECLARE ultimo_numero INT DEFAULT 0;
-    SELECT MAX(CAST(SUBSTRING(numero_pedido, 4) AS UNSIGNED)) INTO ultimo_numero
+    SELECT MAX(CAST(SUBSTRING(numero_pedido, 5) AS UNSIGNED)) INTO ultimo_numero
     FROM pedidos WHERE numero_pedido LIKE 'PED-%';
 
     SET NEW.numero_pedido = CONCAT('PED-', LPAD(IFNULL(ultimo_numero, 0) + 1, 6, '0'));
@@ -443,6 +443,7 @@ DROP TABLE IF EXISTS `zonas`;
 CREATE TABLE `zonas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_zona` varchar(100) NOT NULL,
+  `codigo_postal` varchar(20) DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
   `activo` tinyint(1) DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -470,7 +471,7 @@ BEGIN
         (SELECT SUM(total_usd) FROM pedidos WHERE DATE(fecha_pedido) = CURDATE()) as ventas_hoy_usd,
         (SELECT SUM(total_usd) FROM pedidos WHERE fecha_pedido >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)) as ventas_mes_usd,
         (SELECT COUNT(*) FROM productos WHERE activo = TRUE) as productos_activos,
-        (SELECT COUNT(*) FROM inventario WHERE stock_actual <= stock_minimo) as productos_stock_bajo,
+        (SELECT COUNT(*) FROM inventario i JOIN productos p ON i.producto_id = p.id WHERE i.stock_actual <= p.stock_minimo) as productos_stock_bajo,
         (SELECT tasa_cambio_usd FROM configuracion_empresa LIMIT 1) as tasa_cambio;
 END
 ;;

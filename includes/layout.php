@@ -105,17 +105,35 @@ $inicial_user   = strtoupper(substr($usuario_nombre, 0, 1));
                 </div>
             </div>
 
-            <!-- Despacho -->
-            <a href="index.php?page=despacho" class="flex items-center space-x-3 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
-                <i data-lucide="truck" class="w-5 h-5 text-gray-400"></i>
-                <span class="text-sm font-medium">Asignar Despachador</span>
-            </a>
+            <!-- Despacho Logístico -->
+            <div>
+                <button onclick="toggleSubmenu('sub-despacho')" class="w-full flex items-center justify-between p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all">
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="truck" class="w-5 h-5 text-gray-400 group-hover:text-blue-500"></i>
+                        <span class="text-sm font-medium">Despacho</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-sub-despacho" class="w-4 h-4 transition-transform duration-200"></i>
+                </button>
+                <div id="sub-despacho" class="hidden pl-9 mt-1 space-y-1">
+                    <a href="index.php?page=despacho" class="block p-2 text-xs rounded-md text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">Tablero de Envíos</a>
+                    <a href="index.php?page=despacho_asignar" class="block p-2 text-xs rounded-md text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">Asignar Choferes</a>
+                </div>
+            </div>
 
             <!-- Zonas de Entrega -->
-            <a href="index.php?page=zonas" class="flex items-center space-x-3 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
-                <i data-lucide="map-pin" class="w-5 h-5 text-gray-400"></i>
-                <span class="text-sm font-medium">Zonas de Entrega</span>
-            </a>
+            <div>
+                <button onclick="toggleSubmenu('sub-zonas')" class="w-full flex items-center justify-between p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all">
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-gray-400 group-hover:text-blue-500"></i>
+                        <span class="text-sm font-medium">Zonas de Entrega</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-sub-zonas" class="w-4 h-4 transition-transform duration-200"></i>
+                </button>
+                <div id="sub-zonas" class="hidden pl-9 mt-1 space-y-1">
+                    <a href="index.php?page=zonas" class="block p-2 text-xs rounded-md text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">Ver Zonas</a>
+                    <a href="index.php?page=zonas_crear" class="block p-2 text-xs rounded-md text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">Nueva Zona</a>
+                </div>
+            </div>
 
             <!-- Chat de Ruta -->
             <a href="index.php?page=chat" class="flex items-center space-x-3 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">

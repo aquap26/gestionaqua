@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mariadb:11.4
+    container_name: aqua_db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: root_secreto
+      MARIADB_DATABASE: botella_agua_db
+      MARIADB_USER: aqua_app
+      MARIADB_PASSWORD: aqua_secreto_password
+    ports:
+      - "3308:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+
+  app:
+    build: .
+    container_name: aqua_app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: db
+      DB_NAME: botella_agua_db
+      DB_USER: aqua_app
+      DB_PASS: aqua_secreto_password
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+volumes:
+  db_data:
